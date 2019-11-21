@@ -13,11 +13,9 @@ function init() {
 // rodzaj łączenia linii:
 	ctx.lineJoin = "round";
 	ctx.lineCap = "round";
-// grubość linii:
-	ctx.lineWidth = 20;
-// jesli dodamy poniższą linię - kolejne kolory dodawane będą od spodu
-	// ctx.globalCompositeOperation = "destination-over"; 
-	// na stronie 'globalCompositeOperation' (Mozilla Developer Network) można zobaczyć różne efekty
+	/* można ustawić początkową grubość linii: ctx.lineWidth = 20; */
+	/* jesli dodamy poniższą linię - kolejne kolory dodawane będą od spodu
+		ctx.globalCompositeOperation = "destination-over";*/ 
 
 	let isDrawing = false; // pozwala rysować tylko gdy myszka przyduszona
 // bo poniżej w kodzie przyduszenie przycisku myszki zmienia to 'false' na 'true'
@@ -32,7 +30,8 @@ function init() {
 		if(!isDrawing) return; // jesli nie rysuje - zatrzymuje działanie funkcji,
 						// (gdy klawisz myszki nie jest przyduszony - nie rysuje!)
 			console.log(e); // pokaże faktyczne ruchy kursora myszki
-			ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`; 
+			/* ctx.strokeStyle = 30; dałoby domyślny kolor czarny i linię o narastającej grubości */
+			ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
 	// jeśli dodatkowo wpiszemy:
 			ctx.lineWidth = hue; // to grubość linii będzie narastać tak, jak kolor narasta
 			ctx.beginPath();
@@ -44,6 +43,7 @@ function init() {
 	// dodajemy aktualizację położenia kursora myszki:
 			lastX = e.offsetX;
 			lastY = e.offsetY;
+
 			hue++; // co dolicza kolejne wartości i zmienia kolor rysowanej linii
 			if (hue >= 360) {
 				hue = 0;
